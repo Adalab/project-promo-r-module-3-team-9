@@ -2,8 +2,47 @@ import "../styles/App.scss";
 import logo from '../images/logo-coding-time-2.png';
 import sword from '../images/espada-3.png';
 import logoAdalab from '../images/logo-adalab.png';
+import {useState} from 'react';
 
 function App() {
+
+  const [classColla, setClassColla] = useState('collapsed');
+  const [classArrowDesign, setClassArrowDesign] = useState('arrow-up');
+  const [classArrow, setClassArrow] = useState('arrow-down');
+
+  function handleClickDesign (event){
+      event.preventDefault();
+      if(classColla === 'collapsed'){
+          setClassColla('');
+      }else{
+        setClassColla('collapsed');
+      }
+      setClassArrowDesign('arrow-down');
+      /*closeFill();
+      closeShare();*/
+  };
+
+  function handleClickFill (event){
+    event.preventDefault();
+    if(classColla === 'collapsed'){
+        setClassColla('');
+    }
+    setClassArrow('arrow-up');
+    /*closeFill();
+    closeShare();*/
+};
+
+function handleClickShare (event){
+  event.preventDefault();
+  if(classColla === 'collapsed'){
+      setClassColla('');
+  }
+  setClassArrow('arrow-up');
+  /*closeFill();
+  closeShare();*/
+};
+  
+
   return (
     <div className="body__profilecards">
       <header className="headerprofilecards">
@@ -56,14 +95,14 @@ function App() {
         <section className="main__form">
           <form className="js-form" action="" method="POST">
             <fieldset className="design">
-              <section className="design__wrap1 js-design-clicker">
+              <section className="design__wrap1 js-design-clicker" onClick={handleClickDesign}>
                 <legend className="design__wrap1--legend">
                   <i className="legend__icon fa-regular fa-object-ungroup"></i>
                   Diseña
                 </legend>
-                <img className="js-arrow-design legend__scroll arrow-up" src={sword} alt="Icono desplegable" />
+                <img className={`js-arrow-design legend__scroll ${classArrowDesign}`} src={sword} alt="Icono desplegable" />
               </section>
-              <section className="js-design__wrap2 design__wrap2">
+              <section className={`js-design__wrap2 design__wrap2 ${classColla}`}>
                 <h3 className="color">Colores</h3>
                 <section className="palettes">
                   <div className="palettes__1">
@@ -89,15 +128,15 @@ function App() {
               <div className="line"></div>
             </fieldset>
             <fieldset className="fill">
-              <section className="fill__wrap1 js-fill-clicker">
+              <section className="fill__wrap1 js-fill-clicker" onClick={handleClickFill}>
                 <legend className="fill__wrap1--legend">
                   <i className="legend__icon fa-regular fa-keyboard"></i>
                   Rellena
                 </legend>
-                <img className="js-arrow-fill legend__scroll arrow-down fill__arrow" src={sword}
+                <img className={`js-arrow-fill legend__scroll fill__arrow ${classArrow}`} src={sword}
                   alt="Icono desplegable" />
               </section>
-              <section className="js-fill__wrap2 fill__wrap2 collapsed">
+              <section className={`js-fill__wrap2 fill__wrap2 ${classColla}`}>
                 <label htmlFor="name" className="fill__label">Nombre completo</label>
                 <input className="js-name fill__input" id="name" type="text" name="name" required placeholder="Ej: Marceline Abadeer" />
                 <label htmlFor="job" className="fill__label">Puesto</label>
@@ -125,14 +164,14 @@ function App() {
               <div className="line"></div>
             </fieldset>
             <fieldset className="share">
-                <section className="share__wrap1 js-share-clicker">
+                <section className="share__wrap1 js-share-clicker" onClick={handleClickShare}>
                     <legend className="share__wrap1--legend">
                         <i className="legend__icon fa-solid fa-share-nodes"></i>Comparte
                     </legend>
-                    <img className="js-arrow-share legend__scroll arrow-down" src={sword}
+                    <img className={`js-arrow-share legend__scroll ${classArrow}`} src={sword}
                         alt="Icono desplegable"/>
                 </section>
-                <div className="js-share-wrap-all collapsed">
+                <div className={`js-share-wrap-all ${classColla}`}>
                     <section className="js-share__wrap2 share__wrap2">
                         <button className="js-create__btn share__wrap2--button" id="created-card" type="submit"><i
                                 className="share__card fa-regular fa-address-card"></i>
