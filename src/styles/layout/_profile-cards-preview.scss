@@ -1,7 +1,7 @@
 /*PALETAS*/
 .palette-1 {
   .image {
-    background-image: url(../images/beemo-profile-2.png);
+    background-image: url(../../images/beemo-profile-2.png);
   }
 
   .profile {
@@ -25,7 +25,7 @@
 
 .palette-2 {
   .image {
-    background-image: url(../images/marceline-profile-2.png);
+    background-image: url(../../images/marceline-profile-2.png);
 
   }
 
@@ -50,7 +50,7 @@
 
 .palette-3 {
   .image {
-    background-image: url(../images/jake-profile-2.png);
+    background-image: url(../../images/jake-profile-2.png);
   }
 
   .profile {
@@ -76,18 +76,11 @@
 
 .card {
   min-height: 457px;
-  //background-color: $color-silver;
-  // background-image: url('../images/background-3.jpg');
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-position: right 75% bottom 45%;
 
   background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.1), rgba(1, 1, 1, 0.3));
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-
-  //background-image: linear-gradient(to bottom, rgba(238, 113, 203, 0.5), rgba(0, 148, 207, 0.5));
   align-self: stretch;
   display: flex;
   justify-content: center;
@@ -131,7 +124,6 @@
     background-color: $color-white;
     padding: 21px 0 12px;
     border-radius: 2px;
-    //box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.35);
     box-shadow: $purple-shadow 0px 54px 55px, $purple-shadow 0px -12px 30px, $purple-shadow 0px 4px 6px, $purple-shadow 0px 12px 13px, $purple-shadow 0px -3px 5px;
     ;
   }
@@ -170,7 +162,6 @@
   width: 240px;
   height: 200px;
   margin: 10px 0;
-  //background-image: url(../images/profile-image.jpg);
   background-size: cover;
 }
 
@@ -206,8 +197,6 @@
     margin-top: 20px;
     margin-bottom: 20px;
     min-height: 812px;
-    // justify-self: stretch;
-    // align-content: stretch;
     align-self: auto;
     flex-grow: 3;
   }
