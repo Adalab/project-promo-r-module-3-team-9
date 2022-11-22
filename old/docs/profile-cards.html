@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="icon" href="./assets/images/favicon-5.png" />
+  <title>Algebraic profile-cards</title>
+</head>
+
+<body class="body__profilecards">
+  <!--HEADER-->
+  <header class="headerprofilecards">
+    <a href="./index.html">
+      <img class="headerprofilecards__img" src="./assets/images/logo-coding-time-2.png" alt="Logo Awesome Profile Cards" />
+    </a>
+  </header>
+
+  <!--HEADER-->
+
+  <main class="main">
+    <section class="js-card card">
+      <div class="card__wrap">
+        <button type="reset" class="js-card__button card__button">
+          <span class="card__button__reset__icon"
+            ><i class="fa-sharp fa-solid fa-trash-can"></i
+          ></span>
+          Reset
+        </button>
+        <article class="js-card__article card__article palette-1">
+          <div class="js-profile profile">
+            <h1 class="js-profile__name profile__name">Nombre apellido</h1>
+            <p class="js-profile__text profile__text">Front-end developer</p>
+          </div>
+          <div class="js__profile-image js-image image"></div>
+          <nav class="js-nav nav">
+            <ul class="js-nav__ul nav__ul">
+              <li class="js-nav__li1 nav__li">
+                <a href="" target="_blank" class="js-nav__mobile nav__icon"
+                  ><i class="fa-solid fa-mobile-screen-button"></i
+                ></a>
+              </li>
+              <li class="js-nav__li2 nav__li">
+                <a href="" target="_blank" class="js-nav__mail nav__icon"
+                  ><i class="fa-regular fa-envelope"></i
+                ></a>
+              </li>
+              <li class="js-nav__li3 nav__li">
+                <a href="" target="_blank" class="js-nav__linkedin nav__icon"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+              </li>
+              <li class="js-nav__li4 nav__li">
+                <a href="" target="_blank" class="js-nav__github nav__icon"
+                  ><i class="fa-brands fa-github-alt"></i
+                ></a>
+              </li>
+            </ul>
+          </nav>
+        </article>
+      </div>
+    </section>
+
+    <section class="main__form">
+      <form class="js-form" action="" method="POST">
+        <fieldset class="design">
+          <section class="design__wrap1 js-design-clicker">
+            <legend class="design__wrap1--legend">
+              <i class="legend__icon fa-regular fa-object-ungroup"></i>
+              Diseña
+            </legend>
+            <img class="js-arrow-design legend__scroll arrow-up" src="./assets/images/espada-3.png" alt="Icono desplegable" />
+          </section>
+          <section class="js-design__wrap2 design__wrap2">
+            <h3 class="color">Colores</h3>
+            <section class="palettes">
+              <div class="palettes__1">
+                <input class="palettes__1--radio" id="palette1" type="radio" name="palette" value="1" required checked />
+                <div class="palettes__1--color dark-green"></div>
+                <div class="palettes__1--color dirty-blue"></div>
+                <div class="palettes__1--color hospital-green"></div>
+              </div>
+
+              <div class="palettes__2">
+                <input class="palettes__2--radio" id="palette2" type="radio" name="palette" value="2" required />
+                <div class="palettes__2--color dried-blood"></div>
+                <div class="palettes__2--color rusty-red"></div>
+                <div class="palettes__2--color tomato"></div>
+              </div>
+
+              <div class="palettes__3">
+                <input class="palettes__3--radio" id="palette3" type="radio" name="palette" value="3" required />
+                <div class="palettes__3--color slate"></div>
+                <div class="palettes__3--color faded-orange"></div>
+                <div class="palettes__3--color light-grey-blue"></div>
+              </div>
+            </section>
+          </section>
+          <div class="line"></div>
+        </fieldset>
+        <fieldset class="fill">
+          <section class="fill__wrap1 js-fill-clicker">
+            <legend class="fill__wrap1--legend">
+              <i class="legend__icon fa-regular fa-keyboard"></i>
+              Rellena
+            </legend>
+            <img class="js-arrow-fill legend__scroll arrow-down fill__arrow" src="./assets/images/espada-3.png"
+              alt="Icono desplegable" />
+          </section>
+
+          <section class="js-fill__wrap2 fill__wrap2 collapsed">
+            <label for="name" class="fill__label">Nombre completo</label>
+            <input class="js-name fill__input" id="name" type="text" name="name" required placeholder="Ej: Marceline Abadeer" />
+
+            <label for="job" class="fill__label">Puesto</label>
+            <input class="js-job fill__input" id="job" type="text" name="job" required
+              placeholder="Ej: Front-end vampire queen" />
+
+            <label class="fill__label">Imagen de perfil</label>
+            <div class="js-photo fill__container">
+              <label for="photo" class="fill__button">Añadir imagen</label>
+              <input type="file" class="js__profile-upload-btn fill__input fill__input--hide" id="photo" name="photo"
+                required />
+
+              <div class="js__profile-preview fill__square"></div>
+            </div>
+
+            <label for="email" class="fill__label">Email</label>
+            <input class="js-email fill__input" id="email" type="email" name="email" required
+              placeholder="Ej: vampire.queen@candymail.com" />
+
+            <label for="phone" class="fill__label">Teléfono</label>
+            <input class="js-phone fill__input" id="phone" type="tel" name="phone" required placeholder="Ej: 555-55-55-55" />
+
+            <label for="linkedin" class="fill__label">Linkedin</label>
+            <input class="js-linkedin fill__input" id="linkedin" type="text" name="linkedin" required
+              placeholder="Ej: linkedin.com/in/marceline-abadeer" />
+
+            <label for="github" class="fill__label">Github</label>
+            <input class="js-github fill__input" id="github" type="text" name="github" required required
+              placeholder="Ej: @marceline-abadeer" />
+          </section>
+          <div class="line"></div>
+        </fieldset>
+        <fieldset class="share">
+            <section class="share__wrap1 js-share-clicker">
+                <legend class="share__wrap1--legend">
+                    <i class="legend__icon fa-solid fa-share-nodes"></i>Comparte
+                </legend>
+                <img class="js-arrow-share legend__scroll arrow-down" src="./assets/images/espada-3.png"
+                    alt="Icono desplegable">
+            </section>
+            <div class="js-share-wrap-all collapsed">
+                <section class="js-share__wrap2 share__wrap2">
+                    <button class="js-create__btn share__wrap2--button" id="created-card" type="submit"><i
+                            class="share__card fa-regular fa-address-card"></i>
+                        Crear tarjeta
+                    </button>
+                    <p class="js-errormessage share__wrap2--errormessage"></p>
+                </section>
+                <div class="line"></div>
+
+                <section class="js-share__wrap3 share__wrap3 collapsed">
+                    <h3 class="share__wrap3--h3">La tarjeta ha sido creada:</h3>
+                    <a class="share__wrap3--link js-new_cardlink" href="#" target="_blank"></a>
+                    <a class="share__wrap3--twitter twitter-share-button js-twitter-share-button"
+                        href="https://twitter.com/intent/tweet?text=¡Mirad%20mi%20nueva%20tarjeta!%20&hashtags=CodingTime,Adalab,PromoRadia&url="
+                        data-size="large" target="_blank"><i class="fa-brands fa-twitter share__wrap3--twitter--icon"></i>
+                        Compartir en twitter</a>
+
+                    <div class="line"></div>
+                </section>
+            </div>
+
+        </fieldset>
+      </form>
+    </section>
+  </main>
+
+  <!--FOOTER-->
+  <footer class="footer">
+    <a href="./index.html">
+      <p class="footer__paragraph">Algebraic profile-cards &copy;2022</p>
+    </a>
+    <a href="https://adalab.es/" target="blank"><img class="footer__img" src="./assets/images/logo-adalab.png"
+        alt="Logo Adalab" /></a>
+  </footer>
+  <!--FOOTER-->
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

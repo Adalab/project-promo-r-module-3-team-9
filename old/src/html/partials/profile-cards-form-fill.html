@@ -1,0 +1,44 @@
+<fieldset class="fill">
+  <section class="fill__wrap1 js-fill-clicker">
+    <legend class="fill__wrap1--legend">
+      <i class="legend__icon fa-regular fa-keyboard"></i>
+      Rellena
+    </legend>
+    <img class="js-arrow-fill legend__scroll arrow-down fill__arrow" src="./assets/images/espada-3.png"
+      alt="Icono desplegable" />
+  </section>
+
+  <section class="js-fill__wrap2 fill__wrap2 collapsed">
+    <label for="name" class="fill__label">Nombre completo</label>
+    <input class="js-name fill__input" id="name" type="text" name="name" required placeholder="Ej: Marceline Abadeer" />
+
+    <label for="job" class="fill__label">Puesto</label>
+    <input class="js-job fill__input" id="job" type="text" name="job" required
+      placeholder="Ej: Front-end vampire queen" />
+
+    <label class="fill__label">Imagen de perfil</label>
+    <div class="js-photo fill__container">
+      <label for="photo" class="fill__button">Añadir imagen</label>
+      <input type="file" class="js__profile-upload-btn fill__input fill__input--hide" id="photo" name="photo"
+        required />
+
+      <div class="js__profile-preview fill__square"></div>
+    </div>
+
+    <label for="email" class="fill__label">Email</label>
+    <input class="js-email fill__input" id="email" type="email" name="email" required
+      placeholder="Ej: vampire.queen@candymail.com" />
+
+    <label for="phone" class="fill__label">Teléfono</label>
+    <input class="js-phone fill__input" id="phone" type="tel" name="phone" required placeholder="Ej: 555-55-55-55" />
+
+    <label for="linkedin" class="fill__label">Linkedin</label>
+    <input class="js-linkedin fill__input" id="linkedin" type="text" name="linkedin" required
+      placeholder="Ej: linkedin.com/in/marceline-abadeer" />
+
+    <label for="github" class="fill__label">Github</label>
+    <input class="js-github fill__input" id="github" type="text" name="github" required required
+      placeholder="Ej: @marceline-abadeer" />
+  </section>
+  <div class="line"></div>
+</fieldset>
