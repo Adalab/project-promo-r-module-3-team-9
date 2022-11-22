@@ -14,8 +14,6 @@ function App() {
       event.preventDefault();
       if(classColla === 'collapsed'){
           setClassColla('');
-      }else{
-        setClassColla('collapsed');
       }
       setClassArrowDesign('arrow-down');
       /*closeFill();
