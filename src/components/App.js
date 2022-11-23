@@ -26,6 +26,7 @@ function App() {
         setClassColla('');
     }
     setClassArrow('arrow-up');
+    //
     /*closeFill();
     closeShare();*/
 };
