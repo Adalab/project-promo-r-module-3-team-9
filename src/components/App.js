@@ -7,7 +7,8 @@ import { useState } from 'react';
 function App() {
   const [classColla, setClassColla] = useState('collapsed');
   const [classArrowDesign, setClassArrowDesign] = useState('arrow-up');
-  const [classArrow, setClassArrow] = useState('arrow-down');
+  const [classArrowFill, setClassArrowFill] = useState('arrow-down');
+  const [classArrowShare, setClassArrowShare] = useState('arrow-down');
   const [user, setUser] = useState({
     palette: '1',
     name: '',
@@ -18,6 +19,22 @@ function App() {
     github: '',
     photo: '',
   });
+
+  // lógica de las flechas del equipo de monica
+  // for (let i = 0; i < titleHeader.length; i++) {
+  //   titleHeader[i].addEventListener('click', () => {
+  //     for (let j = 0; j < content.length; j++) {
+  //       if (i === j) {
+  //         content[j].classList.contains('collapsed') && content[j].classList.remove('collapsed');
+  //         arrow[j].classList.contains('upsideDown')
+  //           && arrow[j].classList.remove('upsideDown');
+  //       } else {
+  //         content[j].classList.add('collapsed');
+  //         arrow[j].classList.add('upsideDown');
+  //       }
+  //     }
+  //   });
+  // }
 
   function handleClickDesign(event) {
     event.preventDefault();
@@ -34,7 +51,17 @@ function App() {
     if (classColla === 'collapsed') {
       setClassColla('');
     }
-    setClassArrow('arrow-up');
+    setClassArrowFill('arrow-up');
+    //
+    /*closeFill();
+    closeShare();*/
+  }
+  function handleClickShare(event) {
+    event.preventDefault();
+    if (classColla === 'collapsed') {
+      setClassColla('');
+    }
+    setClassArrowShare('arrow-up');
     //
     /*closeFill();
     closeShare();*/
@@ -210,7 +237,7 @@ function App() {
                   Rellena
                 </legend>
                 <img
-                  className={`js-arrow-fill legend__scroll fill__arrow ${classArrow}`}
+                  className={`js-arrow-fill legend__scroll fill__arrow ${classArrowFill}`}
                   src={sword}
                   alt='Icono desplegable'
                 />
@@ -321,7 +348,7 @@ function App() {
                   Comparte
                 </legend>
                 <img
-                  className={`js-arrow-share legend__scroll ${classArrow}`}
+                  className={`js-arrow-share legend__scroll ${classArrowShare}`}
                   src={sword}
                   alt='Icono desplegable'
                 />
