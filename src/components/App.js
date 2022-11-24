@@ -20,6 +20,7 @@ function App() {
     photo: '',
   });
   const [classPalette, setClassPalette] = useState('palette-1');
+
   // lógica de las flechas del equipo de monica
   // for (let i = 0; i < titleHeader.length; i++) {
   //   titleHeader[i].addEventListener('click', () => {
@@ -82,6 +83,18 @@ function App() {
     }
   }
 
+  function handleClickResetBtn(event) {
+    setUser({
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    });
+  }
   return (
     <div className='body__profilecards'>
       <header className='headerprofilecards'>
@@ -96,7 +109,11 @@ function App() {
       <main className='main'>
         <section className='js-card card'>
           <div className='card__wrap'>
-            <button type='reset' className='js-card__button card__button'>
+            <button
+              type='reset'
+              className='js-card__button card__button'
+              onClick={handleClickResetBtn}
+            >
               <span className='card__button__reset__icon'>
                 <i className='fa-sharp fa-solid fa-trash-can'></i>
               </span>
