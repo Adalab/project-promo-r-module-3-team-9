@@ -5,7 +5,9 @@ import logoAdalab from '../images/logo-adalab.png';
 import { useState } from 'react';
 
 function App() {
-  const [classColla, setClassColla] = useState('collapsed');
+  const [classCollaDesign, setClassCollaDesign] = useState('');
+  const [classCollaFill, setClassCollaFill] = useState('collapsed');
+  const [classCollaShare, setClassCollaShare] = useState('collapsed');
   const [classArrowDesign, setClassArrowDesign] = useState('arrow-up');
   const [classArrowFill, setClassArrowFill] = useState('arrow-down');
   const [classArrowShare, setClassArrowShare] = useState('arrow-down');
@@ -38,33 +40,44 @@ function App() {
 
   function handleClickDesign(event) {
     event.preventDefault();
-    if (classColla === 'collapsed') {
-      setClassColla('');
+    if (classCollaDesign === 'collapsed') {
+      setClassCollaDesign('');
     }
-    setClassArrowDesign('arrow-down');
-    /*closeFill();
-      closeShare();*/
+    setClassArrowDesign('arrow-up');
+    //Hide fill section and update arrow direction
+    setClassCollaFill('collapsed');
+    setClassArrowFill('arrow-down');
+    //Hide share section and update arrow direction
+    setClassCollaShare('collapsed');
+    setClassArrowShare('arrow-down');
   }
 
   function handleClickFill(event) {
     event.preventDefault();
-    if (classColla === 'collapsed') {
-      setClassColla('');
+    if (classCollaFill === 'collapsed') {
+      setClassCollaFill('');
     }
     setClassArrowFill('arrow-up');
-    //
-    /*closeFill();
-    closeShare();*/
+    //Hide design section and update arrow direction
+    setClassCollaDesign('collapsed');
+    setClassArrowDesign('arrow-down');
+    //Hide share section and update arrow direction
+    setClassCollaShare('collapsed');
+    setClassArrowShare('arrow-down');
   }
+
   function handleClickShare(event) {
     event.preventDefault();
-    if (classColla === 'collapsed') {
-      setClassColla('');
+    if (classCollaShare === 'collapsed') {
+      setClassCollaShare('');
     }
     setClassArrowShare('arrow-up');
-    //
-    /*closeFill();
-    closeShare();*/
+    //Hide design section and update arrow direction
+    setClassCollaDesign('collapsed');
+    setClassArrowDesign('arrow-down');
+    //Hide fill section and update arrow direction
+    setClassCollaFill('collapsed');
+    setClassArrowFill('arrow-down');
   }
 
   function handleInput(event) {
@@ -82,6 +95,29 @@ function App() {
     }
   }
 
+  //Reset button
+  const handleResetBtn = () => {
+    //Empty variable
+    setUser({
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    });
+    //Change palette and open design section
+    setClassPalette('palette-1');
+    setClassCollaDesign('');
+    //Close fill section, update arrow direction
+    setClassCollaFill('collapsed');
+    setClassArrowFill('arrow-down');
+    //Close share section, update arrow direction
+    setClassCollaShare('collapsed');
+    setClassArrowShare('arrow-down');
+  }
 
   return (
     <div className='body__profilecards'>
@@ -97,7 +133,7 @@ function App() {
       <main className='main'>
         <section className='js-card card'>
           <div className='card__wrap'>
-            <button type='reset' className='js-card__button card__button'>
+            <button type='reset' className='js-card__button card__button' onClick = {handleResetBtn}>
               <span className='card__button__reset__icon'>
                 <i className='fa-sharp fa-solid fa-trash-can'></i>
               </span>
@@ -106,10 +142,10 @@ function App() {
             <article className={`js-card__article card__article ${classPalette}`}>
               <div className='js-profile profile'>
                 <h1 className='js-profile__name profile__name'>
-                  Nombre apellido
+                  {user.name || 'Nombre apellido'}
                 </h1>
                 <p className='js-profile__text profile__text'>
-                  Front-end developer
+                  {user.job || 'Front-end developer'}
                 </p>
               </div>
               <div className='js__profile-image js-image image'></div>
@@ -117,7 +153,7 @@ function App() {
                 <ul className='js-nav__ul nav__ul'>
                   <li className='js-nav__li1 nav__li'>
                     <a
-                      href=''
+                      href={user.phone ? `tel:${user.phone}` : ''}
                       target='_blank'
                       className='js-nav__mobile nav__icon'
                     >
@@ -126,7 +162,7 @@ function App() {
                   </li>
                   <li className='js-nav__li2 nav__li'>
                     <a
-                      href=''
+                      href={user.email ? `mailto:${user.email}` : ''}
                       target='_blank'
                       className='js-nav__mail nav__icon'
                     >
@@ -135,7 +171,7 @@ function App() {
                   </li>
                   <li className='js-nav__li3 nav__li'>
                     <a
-                      href=''
+                      href={user.linkedin ? `https://www.linkedin.com/in/${user.linkedin}` : '#'}
                       target='_blank'
                       className='js-nav__linkedin nav__icon'
                     >
@@ -144,7 +180,7 @@ function App() {
                   </li>
                   <li className='js-nav__li4 nav__li'>
                     <a
-                      href=''
+                      href={user.github ? `https://github.com/${user.github}` : '#'}
                       target='_blank'
                       className='js-nav__github nav__icon'
                     >
@@ -174,7 +210,7 @@ function App() {
                 />
               </section>
               <section
-                className={`js-design__wrap2 design__wrap2 ${classColla}`}
+                className={`js-design__wrap2 design__wrap2 ${classCollaDesign}`}
               >
                 <h3 className='color'>Colores</h3>
                 <section className='palettes'>
@@ -242,7 +278,7 @@ function App() {
                   alt='Icono desplegable'
                 />
               </section>
-              <section className={`js-fill__wrap2 fill__wrap2 ${classColla}`}>
+              <section className={`js-fill__wrap2 fill__wrap2 ${classCollaFill}`}>
                 <label htmlFor='name' className='fill__label'>
                   Nombre completo
                 </label>
@@ -353,7 +389,7 @@ function App() {
                   alt='Icono desplegable'
                 />
               </section>
-              <div className={`js-share-wrap-all ${classColla}`}>
+              <div className={`js-share-wrap-all ${classCollaShare}`}>
                 <section className='js-share__wrap2 share__wrap2'>
                   <button
                     className='js-create__btn share__wrap2--button'
