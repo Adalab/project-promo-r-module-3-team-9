@@ -21,7 +21,8 @@ function App() {
     github: '',
     photo: '',
   });
-  const[classPalette, setClassPalette]= useState('palette-1');
+  const [classPalette, setClassPalette] = useState('palette-1');
+
   // lógica de las flechas del equipo de monica
   // for (let i = 0; i < titleHeader.length; i++) {
   //   titleHeader[i].addEventListener('click', () => {
@@ -84,14 +85,14 @@ function App() {
     const inputName = event.currentTarget.name;
     const inputValue = event.currentTarget.value;
     setUser({ ...user, [inputName]: inputValue });
-    if(inputName === 'palette' && inputValue === '1'){
-      setClassPalette('palette-1')
-    }if(inputName === 'palette' && inputValue === '2'){
-      setClassPalette('palette-2')
-      
-    }if(inputName === 'palette' && inputValue === '3'){
-      setClassPalette('palette-3')
-      
+    if (inputName === 'palette' && inputValue === '1') {
+      setClassPalette('palette-1');
+    }
+    if (inputName === 'palette' && inputValue === '2') {
+      setClassPalette('palette-2');
+    }
+    if (inputName === 'palette' && inputValue === '3') {
+      setClassPalette('palette-3');
     }
   }
 
@@ -139,7 +140,9 @@ function App() {
               </span>
               Reset
             </button>
-            <article className={`js-card__article card__article ${classPalette}`}>
+            <article
+              className={`js-card__article card__article ${classPalette}`}
+            >
               <div className='js-profile profile'>
                 <h1 className='js-profile__name profile__name'>
                   {user.name || 'Nombre apellido'}
