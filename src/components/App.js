@@ -5,6 +5,8 @@ import logoAdalab from '../images/logo-adalab.png';
 import { useState } from 'react';
 
 function App() {
+
+  //VARIABLES DE ESTADO
   const [classCollaDesign, setClassCollaDesign] = useState('');
   const [classCollaFill, setClassCollaFill] = useState('collapsed');
   const [classCollaShare, setClassCollaShare] = useState('collapsed');
@@ -23,22 +25,7 @@ function App() {
   });
   const [classPalette, setClassPalette] = useState('palette-1');
 
-  // lógica de las flechas del equipo de monica
-  // for (let i = 0; i < titleHeader.length; i++) {
-  //   titleHeader[i].addEventListener('click', () => {
-  //     for (let j = 0; j < content.length; j++) {
-  //       if (i === j) {
-  //         content[j].classList.contains('collapsed') && content[j].classList.remove('collapsed');
-  //         arrow[j].classList.contains('upsideDown')
-  //           && arrow[j].classList.remove('upsideDown');
-  //       } else {
-  //         content[j].classList.add('collapsed');
-  //         arrow[j].classList.add('upsideDown');
-  //       }
-  //     }
-  //   });
-  // }
-
+  //FUNCIONES DE EVENTOS (HANDLE)
   function handleClickDesign(event) {
     event.preventDefault();
     if (classCollaDesign === 'collapsed') {
@@ -119,6 +106,7 @@ function App() {
     setClassCollaShare('collapsed');
     setClassArrowShare('arrow-down');
   }
+
 
   return (
     <div className='body__profilecards'>
