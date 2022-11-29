@@ -1,12 +1,14 @@
 import '../styles/App.scss';
-import logo from '../images/logo-coding-time-2.png';
 import sword from '../images/espada-3.png';
-import logoAdalab from '../images/logo-adalab.png';
 import { useState } from 'react';
-
+import dataApi from '../services/dataApi';
+import Header from './Header';
+import Footer from './Footer';
+//import dataApi from '../services/dataApi';
 function App() {
 
   //VARIABLES DE ESTADO
+  const [dataResult, setDataResult] = useState ({});
   const [classCollaDesign, setClassCollaDesign] = useState('');
   const [classCollaFill, setClassCollaFill] = useState('collapsed');
   const [classCollaShare, setClassCollaShare] = useState('collapsed');
@@ -82,7 +84,12 @@ function App() {
       setClassPalette('palette-3');
     }
   }
-
+ function handleCreateBtnClick (event){
+  event.preventDefault();
+  dataApi(user).then((data)=>{
+    setDataResult(data);
+  });
+ };
   //Reset button
   const handleResetBtn = () => {
     //Empty variable
@@ -110,15 +117,7 @@ function App() {
 
   return (
     <div className='body__profilecards'>
-      <header className='headerprofilecards'>
-        <a href='./index.html'>
-          <img
-            className='headerprofilecards__img'
-            src={logo}
-            alt='Logo Awesome Profile Cards'
-          />
-        </a>
-      </header>
+     <Header></Header>
       <main className='main'>
         <section className='js-card card'>
           <div className='card__wrap'>
@@ -386,6 +385,7 @@ function App() {
                     className='js-create__btn share__wrap2--button'
                     id='created-card'
                     type='submit'
+                    onClick={handleCreateBtnClick}
                   >
                     <i className='share__card fa-regular fa-address-card'></i>
                     Crear tarjeta
@@ -399,9 +399,11 @@ function App() {
                   </h3>
                   <a
                     className='share__wrap3--link js-new_cardlink'
-                    href='#'
+                    href={dataResult.success ? dataResult.cardURL : '#'}
                     target='_blank'
-                  ></a>
+
+                  >{dataResult.success ? dataResult.cardURL : dataResult.error}
+                    </a>
                   <a
                     className='share__wrap3--twitter twitter-share-button js-twitter-share-button'
                     href='https://twitter.com/intent/tweet?text=¡Mirad%20mi%20nueva%20tarjeta!%20&hashtags=CodingTime,Adalab,PromoRadia&url='
@@ -418,16 +420,7 @@ function App() {
           </form>
         </section>
       </main>
-      <footer className='footer'>
-        <a href='./index.html'>
-          <p className='footer__paragraph'>
-            Algebraic profile-cards &copy;2022
-          </p>
-        </a>
-        <a href='https://adalab.es/' target='blank'>
-          <img className='footer__img' src={logoAdalab} alt='Logo Adalab' />
-        </a>
-      </footer>
+      <Footer></Footer>
     </div>
   );
 }
