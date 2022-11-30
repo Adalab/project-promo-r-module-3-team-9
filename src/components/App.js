@@ -6,9 +6,8 @@ import Header from './Header';
 import Footer from './Footer';
 //import dataApi from '../services/dataApi';
 function App() {
-
   //VARIABLES DE ESTADO
-  const [dataResult, setDataResult] = useState ({});
+  const [dataResult, setDataResult] = useState({});
   const [classCollaDesign, setClassCollaDesign] = useState('');
   const [classCollaFill, setClassCollaFill] = useState('collapsed');
   const [classCollaShare, setClassCollaShare] = useState('collapsed');
@@ -23,9 +22,11 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: '',
+    photo:
+      'https://pbs.twimg.com/profile_images/3612785540/f27afb74b4c1952a16be6b5ea79f65ca_400x400.jpeg',
   });
   const [classPalette, setClassPalette] = useState('palette-1');
+  const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
 
   //FUNCIONES DE EVENTOS (HANDLE)
   function handleClickDesign(event) {
@@ -84,12 +85,15 @@ function App() {
       setClassPalette('palette-3');
     }
   }
- function handleCreateBtnClick (event){
-  event.preventDefault();
-  dataApi(user).then((data)=>{
-    setDataResult(data);
-  });
- };
+  function handleCreateBtnClick(event) {
+    event.preventDefault();
+    dataApi(user).then((data) => {
+      if (data.success) {
+        setDataResult(data);
+        setClassCollaCreateCard('');
+      }
+    });
+  }
   //Reset button
   const handleResetBtn = () => {
     //Empty variable
@@ -112,16 +116,20 @@ function App() {
     //Close share section, update arrow direction
     setClassCollaShare('collapsed');
     setClassArrowShare('arrow-down');
-  }
-
+    setClassCollaCreateCard('collapsed');
+  };
 
   return (
     <div className='body__profilecards'>
-     <Header></Header>
+      <Header></Header>
       <main className='main'>
         <section className='js-card card'>
           <div className='card__wrap'>
-            <button type='reset' className='js-card__button card__button' onClick = {handleResetBtn}>
+            <button
+              type='reset'
+              className='js-card__button card__button'
+              onClick={handleResetBtn}
+            >
               <span className='card__button__reset__icon'>
                 <i className='fa-sharp fa-solid fa-trash-can'></i>
               </span>
@@ -161,7 +169,11 @@ function App() {
                   </li>
                   <li className='js-nav__li3 nav__li'>
                     <a
-                      href={user.linkedin ? `https://www.linkedin.com/in/${user.linkedin}` : '#'}
+                      href={
+                        user.linkedin
+                          ? `https://www.linkedin.com/in/${user.linkedin}`
+                          : '#'
+                      }
                       target='_blank'
                       className='js-nav__linkedin nav__icon'
                     >
@@ -170,7 +182,9 @@ function App() {
                   </li>
                   <li className='js-nav__li4 nav__li'>
                     <a
-                      href={user.github ? `https://github.com/${user.github}` : '#'}
+                      href={
+                        user.github ? `https://github.com/${user.github}` : '#'
+                      }
                       target='_blank'
                       className='js-nav__github nav__icon'
                     >
@@ -268,7 +282,9 @@ function App() {
                   alt='Icono desplegable'
                 />
               </section>
-              <section className={`js-fill__wrap2 fill__wrap2 ${classCollaFill}`}>
+              <section
+                className={`js-fill__wrap2 fill__wrap2 ${classCollaFill}`}
+              >
                 <label htmlFor='name' className='fill__label'>
                   Nombre completo
                 </label>
@@ -393,7 +409,9 @@ function App() {
                   <p className='js-errormessage share__wrap2--errormessage'></p>
                 </section>
                 <div className='line'></div>
-                <section className='js-share__wrap3 share__wrap3 collapsed'>
+                <section
+                  className={`js-share__wrap3 share__wrap3 ${classCollaCreateCard}`}
+                >
                   <h3 className='share__wrap3--h3'>
                     La tarjeta ha sido creada:
                   </h3>
@@ -401,9 +419,9 @@ function App() {
                     className='share__wrap3--link js-new_cardlink'
                     href={dataResult.success ? dataResult.cardURL : '#'}
                     target='_blank'
-
-                  >{dataResult.success ? dataResult.cardURL : dataResult.error}
-                    </a>
+                  >
+                    {dataResult.success ? dataResult.cardURL : dataResult.error}
+                  </a>
                   <a
                     className='share__wrap3--twitter twitter-share-button js-twitter-share-button'
                     href='https://twitter.com/intent/tweet?text=¡Mirad%20mi%20nueva%20tarjeta!%20&hashtags=CodingTime,Adalab,PromoRadia&url='

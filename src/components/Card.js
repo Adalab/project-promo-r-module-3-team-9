@@ -1,0 +1,7 @@
+
+
+const Card = (proprs) => {
+    return()
+
+
+}
