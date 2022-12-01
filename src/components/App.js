@@ -2,6 +2,7 @@ import '../styles/App.scss';
 import { useState } from 'react';
 import dataApi from '../services/dataApi';
 import Card from './Card';
+import Footer from './Footer';
 //import dataApi from '../services/dataApi';
 function App() {
   //VARIABLES DE ESTADO
@@ -83,6 +84,7 @@ function App() {
       setClassPalette('palette-3');
     }
   }
+  
   function handleCreateBtnClick(event) {
     event.preventDefault();
     dataApi(user).then((data) => {
@@ -119,7 +121,8 @@ function App() {
 
   return (
     <div className='body__profilecards'>
-      <Card user={user} dataResult={dataResult}></Card>
+      <Card user={user} dataResult={dataResult} handleChange={handleChange} handleClickDesign={handleClickDesign} classArrowDesign={classArrowDesign}></Card>
+      <Footer></Footer>
     </div>
   );
 }

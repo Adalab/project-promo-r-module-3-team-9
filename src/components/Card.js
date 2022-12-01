@@ -3,9 +3,9 @@ import CardPreview from './CardPreview';
 import Design from './Design';
 import Fill from './Fill';
 import Share from './Share';
-import Footer from './Footer';
 
-function Card() {
+
+function Card(props) {
   return (
     <>
       <Header></Header>
@@ -13,13 +13,13 @@ function Card() {
         <CardPreview></CardPreview>
         <section className='main__form'>
           <form className='js-form' action='' method='POST'>
-            <Design user={props.user} handleChange={handleChange}></Design>
+            <Design user={props.user} handleChange={props.handleChange}
+            handleClickDesign={props.handleClickDesign} classArrowDesign={props.classArrowDesign}></Design>
             <Fill></Fill>
             <Share></Share>
           </form>
         </section>
       </main>
-      <Footer></Footer>
     </>
   );
 }

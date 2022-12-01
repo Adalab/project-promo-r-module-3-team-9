@@ -1,25 +1,27 @@
 import sword from '../images/espada-3.png';
+
 function Design(props) {
-  const handleChange = () => {
-    props.handleInput();
-  };
+  /*const handleInput = () => {
+    props.handleChange();
+  };*/
+  
   return (
     <fieldset className='design'>
       <section
         className='design__wrap1 js-design-clicker'
-        onClick={handleClickDesign}
+        onClick={props.handleClickDesign}
       >
         <legend className='design__wrap1--legend'>
           <i className='legend__icon fa-regular fa-object-ungroup'></i>
           Diseña
         </legend>
         <img
-          className={`js-arrow-design legend__scroll ${classArrowDesign}`}
+          className={`js-arrow-design legend__scroll ${props.classArrowDesign}`}
           src={sword}
           alt='Icono desplegable'
         />
       </section>
-      <section className={`js-design__wrap2 design__wrap2 ${classCollaDesign}`}>
+      <section className={`js-design__wrap2 design__wrap2 ${props.classCollaDesign}`}>
         <h3 className='color'>Colores</h3>
         <section className='palettes'>
           <div className='palettes__1'>
