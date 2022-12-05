@@ -143,6 +143,7 @@ function App() {
               classCollaCreateCard={classCollaCreateCard}
               handleResetBtn={handleResetBtn}
               classPalette={classPalette}
+              classCollaDesign={classCollaDesign}
             ></Card>
           }
         />

@@ -21,6 +21,7 @@ function Card(props) {
               handleInput={props.handleInput}
               handleClickDesign={props.handleClickDesign}
               classArrowDesign={props.classArrowDesign}
+              classCollaDesign={props.classCollaDesign}
             ></Design>
             <Fill
               user={props.user}
