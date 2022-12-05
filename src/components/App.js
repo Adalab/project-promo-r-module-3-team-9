@@ -3,7 +3,9 @@ import { useState } from 'react';
 import dataApi from '../services/dataApi';
 import Card from './Card';
 import Footer from './Footer';
-//import dataApi from '../services/dataApi';
+import Landing from './Landing';
+import { Routes, Route } from 'react-router-dom';
+
 function App() {
   //VARIABLES DE ESTADO
   const [dataResult, setDataResult] = useState({});
@@ -85,8 +87,6 @@ function App() {
     }
   }
 
-  const [name, setName] = useState('');
-
   function handleCreateBtnClick(event) {
     event.preventDefault();
     dataApi(user).then((data) => {
@@ -123,23 +123,33 @@ function App() {
 
   return (
     <div className="body__profilecards">
-      <Card
-        user={user}
-        dataResult={dataResult}
-        handleInput={handleInput}
-        handleClickDesign={handleClickDesign}
-        classArrowDesign={classArrowDesign}
-        handleClickFill={handleClickFill}
-        classArrowFill={classArrowFill}
-        classCollaFill={classCollaFill}
-        handleClickShare={handleClickShare}
-        classArrowShare={classArrowShare}
-        classCollaShare={classCollaShare}
-        handleCreateBtnClick={handleCreateBtnClick}
-        classCollaCreateCard={classCollaCreateCard}
-        handleResetBtn={handleResetBtn}
-        classPalette={classPalette}
-      ></Card>
+      <Routes>
+        <Route
+          path="/card"
+          element={
+            <Card
+              user={user}
+              dataResult={dataResult}
+              handleInput={handleInput}
+              handleClickDesign={handleClickDesign}
+              classArrowDesign={classArrowDesign}
+              handleClickFill={handleClickFill}
+              classArrowFill={classArrowFill}
+              classCollaFill={classCollaFill}
+              handleClickShare={handleClickShare}
+              classArrowShare={classArrowShare}
+              classCollaShare={classCollaShare}
+              handleCreateBtnClick={handleCreateBtnClick}
+              classCollaCreateCard={classCollaCreateCard}
+              handleResetBtn={handleResetBtn}
+              classPalette={classPalette}
+            ></Card>
+          }
+        />
+
+        <Route path="/" element={<Landing></Landing>} />
+      </Routes>
+
       <Footer></Footer>
     </div>
   );
