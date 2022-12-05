@@ -1,12 +1,15 @@
 import '../styles/App.scss';
 import logo from '../images/logo-coding-time-2.png';
+import '../styles/App.scss';
 import sword from '../images/espada-3.png';
-import logoAdalab from '../images/logo-adalab.png';
 import { useState } from 'react';
-
+import dataApi from '../services/dataApi';
+import Header from './Header';
+import Footer from './Footer';
+//import dataApi from '../services/dataApi';
 function App() {
-
   //VARIABLES DE ESTADO
+  const [dataResult, setDataResult] = useState({});
   const [classCollaDesign, setClassCollaDesign] = useState('');
   const [classCollaFill, setClassCollaFill] = useState('collapsed');
   const [classCollaShare, setClassCollaShare] = useState('collapsed');
@@ -21,9 +24,11 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo: '',
+    photo:
+      'https://pbs.twimg.com/profile_images/3612785540/f27afb74b4c1952a16be6b5ea79f65ca_400x400.jpeg',
   });
   const [classPalette, setClassPalette] = useState('palette-1');
+  const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
 
   //FUNCIONES DE EVENTOS (HANDLE)
   function handleClickDesign(event) {
@@ -82,7 +87,15 @@ function App() {
       setClassPalette('palette-3');
     }
   }
-
+  function handleCreateBtnClick(event) {
+    event.preventDefault();
+    dataApi(user).then((data) => {
+      if (data.success) {
+        setDataResult(data);
+        setClassCollaCreateCard('');
+      }
+    });
+  }
   //Reset button
   const handleResetBtn = () => {
     //Empty variable
@@ -105,77 +118,75 @@ function App() {
     //Close share section, update arrow direction
     setClassCollaShare('collapsed');
     setClassArrowShare('arrow-down');
-  }
-
+    setClassCollaCreateCard('collapsed');
+  };
 
   return (
-    <div className='body__profilecards'>
-      <header className='headerprofilecards'>
-        <a href='./index.html'>
+    <div className="body__profilecards">
+      <header className="headerprofilecards">
+        <a href="./index.html">
           <img
-            className='headerprofilecards__img'
+            className="headerprofilecards__img"
             src={logo}
-            alt='Logo Awesome Profile Cards'
+            alt="Logo Awesome Profile Cards"
           />
         </a>
       </header>
-      <main className='main'>
-        <section className='js-card card'>
-          <div className='card__wrap'>
-            <button type='reset' className='js-card__button card__button' onClick = {handleResetBtn}>
-              <span className='card__button__reset__icon'>
-                <i className='fa-sharp fa-solid fa-trash-can'></i>
+      <main className="main">
+        <section className="js-card card">
+          <div className="card__wrap">
+            <button type="reset" className="js-card__button card__button">
+              <span className="card__button__reset__icon">
+                <i className="fa-sharp fa-solid fa-trash-can"></i>
               </span>
               Reset
             </button>
-            <article
-              className={`js-card__article card__article ${classPalette}`}
-            >
-              <div className='js-profile profile'>
-                <h1 className='js-profile__name profile__name'>
-                  {user.name || 'Nombre apellido'}
+            <article className="js-card__article card__article palette-1">
+              <div className="js-profile profile">
+                <h1 className="js-profile__name profile__name">
+                  Nombre apellido
                 </h1>
-                <p className='js-profile__text profile__text'>
-                  {user.job || 'Front-end developer'}
+                <p className="js-profile__text profile__text">
+                  Front-end developer
                 </p>
               </div>
-              <div className='js__profile-image js-image image'></div>
-              <nav className='js-nav nav'>
-                <ul className='js-nav__ul nav__ul'>
-                  <li className='js-nav__li1 nav__li'>
+              <div className="js__profile-image js-image image"></div>
+              <nav className="js-nav nav">
+                <ul className="js-nav__ul nav__ul">
+                  <li className="js-nav__li1 nav__li">
                     <a
-                      href={user.phone ? `tel:${user.phone}` : ''}
-                      target='_blank'
-                      className='js-nav__mobile nav__icon'
+                      href=""
+                      target="_blank"
+                      className="js-nav__mobile nav__icon"
                     >
-                      <i className='fa-solid fa-mobile-screen-button'></i>
+                      <i className="fa-solid fa-mobile-screen-button"></i>
                     </a>
                   </li>
-                  <li className='js-nav__li2 nav__li'>
+                  <li className="js-nav__li2 nav__li">
                     <a
-                      href={user.email ? `mailto:${user.email}` : ''}
-                      target='_blank'
-                      className='js-nav__mail nav__icon'
+                      href=""
+                      target="_blank"
+                      className="js-nav__mail nav__icon"
                     >
-                      <i className='fa-regular fa-envelope'></i>
+                      <i className="fa-regular fa-envelope"></i>
                     </a>
                   </li>
-                  <li className='js-nav__li3 nav__li'>
+                  <li className="js-nav__li3 nav__li">
                     <a
-                      href={user.linkedin ? `https://www.linkedin.com/in/${user.linkedin}` : '#'}
-                      target='_blank'
-                      className='js-nav__linkedin nav__icon'
+                      href=""
+                      target="_blank"
+                      className="js-nav__linkedin nav__icon"
                     >
-                      <i className='fa-brands fa-linkedin-in'></i>
+                      <i className="fa-brands fa-linkedin-in"></i>
                     </a>
                   </li>
-                  <li className='js-nav__li4 nav__li'>
+                  <li className="js-nav__li4 nav__li">
                     <a
-                      href={user.github ? `https://github.com/${user.github}` : '#'}
-                      target='_blank'
-                      className='js-nav__github nav__icon'
+                      href=""
+                      target="_blank"
+                      className="js-nav__github nav__icon"
                     >
-                      <i className='fa-brands fa-github-alt'></i>
+                      <i className="fa-brands fa-github-alt"></i>
                     </a>
                   </li>
                 </ul>
@@ -195,60 +206,53 @@ function App() {
                   Diseña
                 </legend>
                 <img
-                  className={`js-arrow-design legend__scroll ${classArrowDesign}`}
+                  className="js-arrow-design legend__scroll arrow-up"
                   src={sword}
-                  alt='Icono desplegable'
+                  alt="Icono desplegable"
                 />
               </section>
-              <section
-                className={`js-design__wrap2 design__wrap2 ${classCollaDesign}`}
-              >
-                <h3 className='color'>Colores</h3>
-                <section className='palettes'>
-                  <div className='palettes__1'>
+              <section className="js-design__wrap2 design__wrap2">
+                <h3 className="color">Colores</h3>
+                <section className="palettes">
+                  <div className="palettes__1">
                     <input
-                      className='palettes__1--radio'
-                      id='palette1'
-                      type='radio'
-                      name='palette'
-                      value='1'
+                      className="palettes__1--radio"
+                      id="palette1"
+                      type="radio"
+                      name="palette"
+                      value="1"
                       required
-                      checked={user.palette === '1'}
-                      onChange={handleInput}
+                      checked
                     />
-                    <div className='palettes__1--color dark-green'></div>
-                    <div className='palettes__1--color dirty-blue'></div>
-                    <div className='palettes__1--color hospital-green'></div>
+                    <div className="palettes__1--color dark-green"></div>
+                    <div className="palettes__1--color dirty-blue"></div>
+                    <div className="palettes__1--color hospital-green"></div>
                   </div>
-                  <div className='palettes__2'>
+                  <div className="palettes__2">
                     <input
-                      className='palettes__2--radio'
-                      id='palette2'
-                      type='radio'
-                      name='palette'
-                      value='2'
+                      className="palettes__2--radio"
+                      id="palette2"
+                      type="radio"
+                      name="palette"
+                      value="2"
                       required
-                      checked={user.palette === '2'}
-                      onChange={handleInput}
                     />
-                    <div className='palettes__2--color dried-blood'></div>
-                    <div className='palettes__2--color rusty-red'></div>
-                    <div className='palettes__2--color tomato'></div>
+                    <div className="palettes__2--color dried-blood"></div>
+                    <div className="palettes__2--color rusty-red"></div>
+                    <div className="palettes__2--color tomato"></div>
                   </div>
-                  <div className='palettes__3'>
+                  <div className="palettes__3">
                     <input
-                      className='palettes__3--radio'
-                      id='palette3'
-                      type='radio'
-                      name='palette'
-                      value='3'
+                      className="palettes__3--radio"
+                      id="palette3"
+                      type="radio"
+                      name="palette"
+                      value="3"
                       required
-                      checked={user.palette === '3'}
-                      onChange={handleInput}
                     />
-                    <div className='palettes__3--color slate'></div>
-                    <div className='palettes__3--color faded-orange'></div>
-                    <div className='palettes__3--color light-grey-blue'></div>
+                    <div className="palettes__3--color slate"></div>
+                    <div className="palettes__3--color faded-orange"></div>
+                    <div className="palettes__3--color light-grey-blue"></div>
                   </div>
                 </section>
               </section>
@@ -264,144 +268,117 @@ function App() {
                   Rellena
                 </legend>
                 <img
-                  className={`js-arrow-fill legend__scroll fill__arrow ${classArrowFill}`}
+                  className="js-arrow-fill legend__scroll arrow-down fill__arrow"
                   src={sword}
-                  alt='Icono desplegable'
+                  alt="Icono desplegable"
                 />
               </section>
-              <section className={`js-fill__wrap2 fill__wrap2 ${classCollaFill}`}>
-                <label htmlFor='name' className='fill__label'>
+              <section className="js-fill__wrap2 fill__wrap2 collapsed">
+                <label htmlFor="name" className="fill__label">
                   Nombre completo
                 </label>
                 <input
-                  className='js-name fill__input'
-                  id='name'
-                  type='text'
-                  name='name'
+                  className="js-name fill__input"
+                  id="name"
+                  type="text"
+                  name="name"
                   required
-                  placeholder='Ej: Marceline Abadeer'
-                  onChange={handleInput}
-                  value={user.name}
+                  placeholder="Ej: Marceline Abadeer"
                 />
-                <label htmlFor='job' className='fill__label'>
+                <label htmlFor="job" className="fill__label">
                   Puesto
                 </label>
                 <input
-                  className='js-job fill__input'
-                  id='job'
-                  type='text'
-                  name='job'
+                  className="js-job fill__input"
+                  id="job"
+                  type="text"
+                  name="job"
                   required
-                  placeholder='Ej: Front-end vampire queen'
-                  onChange={handleInput}
-                  value={user.job}
+                  placeholder="Ej: Front-end vampire queen"
                 />
-                <label className='fill__label'>Imagen de perfil</label>
-                <div className='js-photo fill__container'>
-                  <label htmlFor='photo' className='fill__button'>
+                <label className="fill__label">Imagen de perfil</label>
+                <div className="js-photo fill__container">
+                  <label htmlFor="photo" className="fill__button">
                     Añadir imagen
                   </label>
                   <input
-                    type='file'
-                    className='js__profile-upload-btn fill__input fill__input--hide'
-                    id='photo'
-                    name='photo'
+                    type="file"
+                    className="js__profile-upload-btn fill__input fill__input--hide"
+                    id="photo"
+                    name="photo"
                     required
                   />
-                  <div className='js__profile-preview fill__square'></div>
+                  <div className="js__profile-preview fill__square"></div>
                 </div>
-                <label htmlFor='email' className='fill__label'>
+                <label htmlFor="email" className="fill__label">
                   Email
                 </label>
                 <input
-                  className='js-email fill__input'
-                  id='email'
-                  type='email'
-                  name='email'
+                  className="js-email fill__input"
+                  id="email"
+                  type="email"
+                  name="email"
                   required
-                  placeholder='Ej: vampire.queen@candymail.com'
-                  onChange={handleInput}
-                  value={user.email}
+                  placeholder="Ej: vampire.queen@candymail.com"
                 />
-                <label htmlFor='phone' className='fill__label'>
+                <label htmlFor="phone" className="fill__label">
                   Teléfono
                 </label>
                 <input
-                  className='js-phone fill__input'
-                  id='phone'
-                  type='tel'
-                  name='phone'
+                  className="js-phone fill__input"
+                  id="phone"
+                  type="tel"
+                  name="phone"
                   required
-                  placeholder='Ej: 555-55-55-55'
-                  onChange={handleInput}
-                  value={user.phone}
+                  placeholder="Ej: 555-55-55-55"
                 />
-                <label htmlFor='linkedin' className='fill__label'>
+                <label htmlFor="linkedin" className="fill__label">
                   Linkedin
                 </label>
                 <input
-                  className='js-linkedin fill__input'
-                  id='linkedin'
-                  type='text'
-                  name='linkedin'
+                  className="js-linkedin fill__input"
+                  id="linkedin"
+                  type="text"
+                  name="linkedin"
                   required
-                  placeholder='Ej: linkedin.com/in/marceline-abadeer'
-                  onChange={handleInput}
-                  value={user.linkedin}
+                  placeholder="Ej: linkedin.com/in/marceline-abadeer"
                 />
-                <label htmlFor='github' className='fill__label'>
+                <label htmlFor="github" className="fill__label">
                   Github
                 </label>
                 <input
-                  className='js-github fill__input'
-                  id='github'
-                  type='text'
-                  name='github'
+                  className="js-github fill__input"
+                  id="github"
+                  type="text"
+                  name="github"
                   required
-                  placeholder='Ej: @marceline-abadeer'
-                  onChange={handleInput}
-                  value={user.github}
+                  placeholder="Ej: @marceline-abadeer"
                 />
               </section>
               <div className='line'></div>
             </fieldset>
-            <fieldset className='share'>
-              <section
-                className='share__wrap1 js-share-clicker'
-                onClick={handleClickShare}
-              >
-                <legend className='share__wrap1--legend'>
-                  <i className='legend__icon fa-solid fa-share-nodes'></i>
-                  Comparte
-                </legend>
-                <img
-                  className={`js-arrow-share legend__scroll ${classArrowShare}`}
-                  src={sword}
-                  alt='Icono desplegable'
-                />
-              </section>
-              <div className={`js-share-wrap-all ${classCollaShare}`}>
-                <section className='js-share__wrap2 share__wrap2'>
-                  <button
-                    className='js-create__btn share__wrap2--button'
-                    id='created-card'
-                    type='submit'
-                  >
-                    <i className='share__card fa-regular fa-address-card'></i>
-                    Crear tarjeta
-                  </button>
-                  <p className='js-errormessage share__wrap2--errormessage'></p>
+            <fieldset className="share">
+                <section className="share__wrap1 js-share-clicker">
+                    <legend className="share__wrap1--legend">
+                        <i className="legend__icon fa-solid fa-share-nodes"></i>Comparte
+                    </legend>
+                    <img className="js-arrow-share legend__scroll arrow-down" src={sword}
+                        alt="Icono desplegable"/>
                 </section>
                 <div className='line'></div>
-                <section className='js-share__wrap3 share__wrap3 collapsed'>
+                <section
+                  className={`js-share__wrap3 share__wrap3 ${classCollaCreateCard}`}
+                >
                   <h3 className='share__wrap3--h3'>
                     La tarjeta ha sido creada:
                   </h3>
                   <a
                     className='share__wrap3--link js-new_cardlink'
-                    href='#'
+                    href={dataResult.success ? dataResult.cardURL : '#'}
                     target='_blank'
-                  ></a>
+                  >
+                    {dataResult.success ? dataResult.cardURL : dataResult.error}
+                  </a>
                   <a
                     className='share__wrap3--twitter twitter-share-button js-twitter-share-button'
                     href='https://twitter.com/intent/tweet?text=¡Mirad%20mi%20nueva%20tarjeta!%20&hashtags=CodingTime,Adalab,PromoRadia&url='
@@ -418,14 +395,14 @@ function App() {
           </form>
         </section>
       </main>
-      <footer className='footer'>
-        <a href='./index.html'>
-          <p className='footer__paragraph'>
+      <footer className="footer">
+        <a href="./index.html">
+          <p className="footer__paragraph">
             Algebraic profile-cards &copy;2022
           </p>
         </a>
-        <a href='https://adalab.es/' target='blank'>
-          <img className='footer__img' src={logoAdalab} alt='Logo Adalab' />
+        <a href="https://adalab.es/" target="blank">
+          <img className="footer__img" src={logoAdalab} alt="Logo Adalab" />
         </a>
       </footer>
     </div>
