@@ -84,7 +84,9 @@ function App() {
       setClassPalette('palette-3');
     }
   }
-  
+
+  const [name, setName] = useState('');
+
   function handleCreateBtnClick(event) {
     event.preventDefault();
     dataApi(user).then((data) => {
@@ -120,8 +122,24 @@ function App() {
   };
 
   return (
-    <div className='body__profilecards'>
-      <Card user={user} dataResult={dataResult} handleChange={handleChange} handleClickDesign={handleClickDesign} classArrowDesign={classArrowDesign}></Card>
+    <div className="body__profilecards">
+      <Card
+        user={user}
+        dataResult={dataResult}
+        handleInput={handleInput}
+        handleClickDesign={handleClickDesign}
+        classArrowDesign={classArrowDesign}
+        handleClickFill={handleClickFill}
+        classArrowFill={classArrowFill}
+        classCollaFill={classCollaFill}
+        handleClickShare={handleClickShare}
+        classArrowShare={classArrowShare}
+        classCollaShare={classCollaShare}
+        handleCreateBtnClick={handleCreateBtnClick}
+        classCollaCreateCard={classCollaCreateCard}
+        handleResetBtn={handleResetBtn}
+        classPalette={classPalette}
+      ></Card>
       <Footer></Footer>
     </div>
   );
