@@ -196,13 +196,12 @@
   .card {
     border-radius: 6px;
     margin-right: 20px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    align-self: center;
-    //min-height: 812px;
-    height: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    //align-self: center;
+    min-height: 95%;
     flex-grow: 3;
-    min-height: initial;
+    //min-height: initial;
   }
 }
 
