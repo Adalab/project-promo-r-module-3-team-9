@@ -139,6 +139,17 @@ function App() {
     //Reset image;
     setFileImage('');
     setErrorMsg('');
+    ls.set('user', {
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    })
+    ls.set('palette', 'palette-1');
   };
 
   return (
