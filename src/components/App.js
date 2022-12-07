@@ -34,6 +34,7 @@ function App() {
     setFileImage(imageData);
     setUser({ ...user, photo: imageData });
   };
+
   function handleClickDesign(event) {
     event.preventDefault();
     if (classCollaDesign === 'collapsed') {
