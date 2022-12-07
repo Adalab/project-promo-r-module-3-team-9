@@ -23,8 +23,7 @@ function App() {
     email: '',
     linkedin: '',
     github: '',
-    photo:
-      'https://pbs.twimg.com/profile_images/3612785540/f27afb74b4c1952a16be6b5ea79f65ca_400x400.jpeg',
+    photo: '',
   });
   const [classPalette, setClassPalette] = useState('palette-1');
   const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
@@ -32,8 +31,8 @@ function App() {
 
   //FUNCIONES DE EVENTOS (HANDLE)
   const handleImage = (imageData) => {
-    console.log(imageData);
     setFileImage(imageData);
+    setUser({ ...user, photo: imageData });
   };
   function handleClickDesign(event) {
     event.preventDefault();
@@ -94,8 +93,11 @@ function App() {
 
   function handleCreateBtnClick(event) {
     event.preventDefault();
+    console.log('entra en el botón');
     dataApi(user).then((data) => {
+      console.log(data);
       if (data.success) {
+        console.log('data success guay y entra la función');
         setDataResult(data);
         setClassCollaCreateCard('');
       }
@@ -124,6 +126,8 @@ function App() {
     setClassCollaShare('collapsed');
     setClassArrowShare('arrow-down');
     setClassCollaCreateCard('collapsed');
+    //Reset image;
+    setFileImage('');
   };
 
   return (
