@@ -5,6 +5,7 @@ import Card from './Card';
 import Footer from './Footer';
 import Landing from './Landing';
 import { Routes, Route } from 'react-router-dom';
+import ls from '../services/localStorage';
 
 function App() {
   //VARIABLES DE ESTADO
@@ -15,16 +16,18 @@ function App() {
   const [classArrowDesign, setClassArrowDesign] = useState('arrow-up');
   const [classArrowFill, setClassArrowFill] = useState('arrow-down');
   const [classArrowShare, setClassArrowShare] = useState('arrow-down');
-  const [user, setUser] = useState({
-    palette: '1',
-    name: '',
-    job: '',
-    phone: '',
-    email: '',
-    linkedin: '',
-    github: '',
-    photo: '',
-  });
+  const [user, setUser] = useState(
+    ls.get('user', {
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    })
+  );
   const [classPalette, setClassPalette] = useState('palette-1');
   const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
   const [fileImage, setFileImage] = useState('');
@@ -32,6 +35,7 @@ function App() {
   //FUNCIONES DE EVENTOS (HANDLE)
   const handleImage = (imageData) => {
     setFileImage(imageData);
+    ls.set('user', { ...user, photo: imageData });
     setUser({ ...user, photo: imageData });
   };
 
@@ -80,6 +84,7 @@ function App() {
   function handleInput(event) {
     const inputName = event.currentTarget.name;
     const inputValue = event.currentTarget.value;
+    ls.set('user', { ...user, [inputName]: inputValue });
     setUser({ ...user, [inputName]: inputValue });
     if (inputName === 'palette' && inputValue === '1') {
       setClassPalette('palette-1');

@@ -26,10 +26,16 @@ function CardPreview(props) {
           <div
             className='js__profile-image js-image image'
             style={
-              props.fileImage
-                ? { backgroundImage: `url(${props.fileImage})` }
+              props.user.photo
+                ? { backgroundImage: `url(${props.user.photo})` }
                 : null
             }
+
+            // style={
+            //   props.fileImage
+            //     ? { backgroundImage: `url(${props.fileImage})` }
+            //     : null
+            // }
           ></div>
           <nav className='js-nav nav'>
             <ul className='js-nav__ul nav__ul'>
