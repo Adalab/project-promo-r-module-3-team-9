@@ -8,14 +8,15 @@ function Card(props) {
   return (
     <>
       <Header></Header>
-      <main className="main">
+      <main className='main'>
         <CardPreview
           handleResetBtn={props.handleResetBtn}
           classPalette={props.classPalette}
           user={props.user}
+          fileImage={props.fileImage}
         ></CardPreview>
-        <section className="main__form">
-          <form className="js-form" action="" method="POST">
+        <section className='main__form'>
+          <form className='js-form' action='' method='POST'>
             <Design
               user={props.user}
               handleInput={props.handleInput}
@@ -29,6 +30,8 @@ function Card(props) {
               classArrowFill={props.classArrowFill}
               classCollaFill={props.classCollaFill}
               handleInput={props.handleInput}
+              handleImage={props.handleImage}
+              fileImage={props.fileImage}
             ></Fill>
             <Share
               handleClickShare={props.handleClickShare}

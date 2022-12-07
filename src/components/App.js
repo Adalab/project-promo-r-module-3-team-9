@@ -28,8 +28,13 @@ function App() {
   });
   const [classPalette, setClassPalette] = useState('palette-1');
   const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
+  const [fileImage, setFileImage] = useState('');
 
   //FUNCIONES DE EVENTOS (HANDLE)
+  const handleImage = (imageData) => {
+    console.log(imageData);
+    setFileImage(imageData);
+  };
   function handleClickDesign(event) {
     event.preventDefault();
     if (classCollaDesign === 'collapsed') {
@@ -122,10 +127,10 @@ function App() {
   };
 
   return (
-    <div className="body__profilecards">
+    <div className='body__profilecards'>
       <Routes>
         <Route
-          path="/card"
+          path='/card'
           element={
             <Card
               user={user}
@@ -144,11 +149,13 @@ function App() {
               handleResetBtn={handleResetBtn}
               classPalette={classPalette}
               classCollaDesign={classCollaDesign}
+              handleImage={handleImage}
+              fileImage={fileImage}
             ></Card>
           }
         />
 
-        <Route path="/" element={<Landing></Landing>} />
+        <Route path='/' element={<Landing></Landing>} />
       </Routes>
 
       <Footer></Footer>
