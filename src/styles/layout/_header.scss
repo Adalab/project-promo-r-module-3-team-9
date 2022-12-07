@@ -4,7 +4,7 @@
   &__img {
     padding-bottom: 35.4px;
     width: 250px;
-    
+
     @media all and (min-width: 768px) {
       padding-bottom: 31px;
       width: 419px;
@@ -14,11 +14,12 @@
 
 .headerprofilecards {
   background-color: transparent;
-  min-height: 111px;
+  height: 15vh;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   &__img {
-    margin: 31px 0px 30px 40px;
-    width: 201px;
+    margin: 0px 0px 0px 30px;
+    width: 180px;
   }
 }

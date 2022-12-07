@@ -26,7 +26,6 @@
 .palette-2 {
   .image {
     background-image: url(../../images/marceline-profile-2.png);
-
   }
 
   .profile {
@@ -76,8 +75,11 @@
 
 .card {
   min-height: 457px;
-
-  background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.1), rgba(1, 1, 1, 0.3));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(1, 1, 1, 0.1),
+    rgba(1, 1, 1, 0.3)
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -85,7 +87,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  @media all and (min-width: 768px) {
+      border-radius: 6px;
+      margin-right: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      flex-grow: 3;
+  }
   &__wrap {
     width: 240px;
     display: flex;
@@ -109,8 +117,7 @@
     transition: transform 1s;
 
     &:hover {
-      transform: scale(1.20);
-
+      transform: scale(1.2);
     }
 
     &__reset__icon {
@@ -124,8 +131,9 @@
     background-color: $color-white;
     padding: 21px 0 12px;
     border-radius: 2px;
-    box-shadow: $purple-shadow 0px 54px 55px, $purple-shadow 0px -12px 30px, $purple-shadow 0px 4px 6px, $purple-shadow 0px 12px 13px, $purple-shadow 0px -3px 5px;
-    ;
+    box-shadow: $purple-shadow 0px 54px 55px, $purple-shadow 0px -12px 30px,
+      $purple-shadow 0px 4px 6px, $purple-shadow 0px 12px 13px,
+      $purple-shadow 0px -3px 5px;
   }
 }
 
@@ -190,20 +198,3 @@
   }
 }
 
-@media all and (min-width: 768px) {
-  .card {
-    border-radius: 6px;
-    margin-right: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    min-height: 812px;
-    align-self: auto;
-    flex-grow: 3;
-  }
-}
-
-@media all and (min-width: 1024px) {
-  .card {
-    //width: 57.13%;
-  }
-}

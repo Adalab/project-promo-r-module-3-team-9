@@ -3,14 +3,16 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left 15% bottom 45%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .main {
-
   @media all and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    min-height: 75vh;
   }
 
   @media all and (min-width: 1024px) {
@@ -22,7 +24,6 @@
       width: 399px;
     }
   }
-
 }
 
 .legend {
@@ -37,8 +38,6 @@
   border-bottom: solid 1px $amazon;
   padding-top: 10px;
   width: 100%;
-
-
 }
 
 .arrow-up {

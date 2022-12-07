@@ -1,6 +1,6 @@
 @mixin footer-common {
   background-color: $color-white;
-  height: 110px;
+  height: 15vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,7 +8,7 @@
   border-top: solid 1px $amazon;
 
   @media all and (min-width: 768px) {
-    height: 60px;
+    height: 9vh;
     flex-direction: row;
     justify-content: space-between;
   }

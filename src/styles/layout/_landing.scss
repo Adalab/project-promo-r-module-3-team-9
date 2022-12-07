@@ -10,13 +10,16 @@
   background-size: cover;
   background-position: center center;
 
-
   &__wrap1 {
     display: flex;
     flex-direction: column;
     gap: 38.6px;
     align-items: center;
-    height: 100%;
+    height: 85vh;
+    width: 100vw;
+    @media all and (min-width: 768px) {
+      height: 90vh;
+    }
   }
 
   &__wrap2 {
@@ -83,7 +86,8 @@
     grid-template-rows: auto auto;
     text-align: center;
 
-    @media all and (min-width: 768px) {}
+    @media all and (min-width: 768px) {
+    }
 
     &--item {
       display: grid;
@@ -139,13 +143,11 @@
     transition: background-color 1s, transform 1s;
 
     &:hover {
-      transform: scale(1.20);
+      transform: scale(1.2);
       background-color: transparent;
       color: $amazon;
       border: 2px solid $amazon;
-
     }
-
   }
 
   @media all and (min-width: 768px) {
