@@ -28,9 +28,10 @@ function App() {
       photo: '',
     })
   );
-  const [classPalette, setClassPalette] = useState('palette-1');
+  const [classPalette, setClassPalette] = useState(ls.get('palette', 'palette-1'));
   const [classCollaCreateCard, setClassCollaCreateCard] = useState('collapsed');
   const [fileImage, setFileImage] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   //FUNCIONES DE EVENTOS (HANDLE)
   const handleImage = (imageData) => {
@@ -88,24 +89,28 @@ function App() {
     setUser({ ...user, [inputName]: inputValue });
     if (inputName === 'palette' && inputValue === '1') {
       setClassPalette('palette-1');
+      ls.set('palette', 'palette-1');
     }
     if (inputName === 'palette' && inputValue === '2') {
       setClassPalette('palette-2');
+      ls.set('palette', 'palette-2');
     }
     if (inputName === 'palette' && inputValue === '3') {
       setClassPalette('palette-3');
+      ls.set('palette', 'palette-3');
     }
+    
   }
 
   function handleCreateBtnClick(event) {
     event.preventDefault();
-    console.log('entra en el botón');
     dataApi(user).then((data) => {
-      console.log(data);
       if (data.success) {
-        console.log('data success guay y entra la función');
         setDataResult(data);
         setClassCollaCreateCard('');
+        setErrorMsg('');
+      }else{
+        setErrorMsg('Tienes que rellenar todos los campos');
       }
     });
   }
@@ -134,6 +139,7 @@ function App() {
     setClassCollaCreateCard('collapsed');
     //Reset image;
     setFileImage('');
+    setErrorMsg('');
   };
 
   return (
@@ -161,6 +167,7 @@ function App() {
               classCollaDesign={classCollaDesign}
               handleImage={handleImage}
               fileImage={fileImage}
+              errorMsg={errorMsg}
             ></Card>
           }
         />

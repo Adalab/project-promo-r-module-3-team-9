@@ -40,6 +40,7 @@ function Card(props) {
               handleCreateBtnClick={props.handleCreateBtnClick}
               classCollaCreateCard={props.classCollaCreateCard}
               dataResult={props.dataResult}
+              errorMsg={props.errorMsg}
             ></Share>
           </form>
         </section>

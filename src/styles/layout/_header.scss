@@ -15,12 +15,11 @@
 .headerprofilecards {
   background-color: transparent;
   height: 15vh;
-  //min-height: 111px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   &__img {
     margin: 0px 0px 0px 30px;
-    width: 201px;
+    width: 180px;
   }
 }

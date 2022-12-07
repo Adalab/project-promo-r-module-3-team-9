@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    height: 75vh;
+    min-height: 75vh;
   }
 
   @media all and (min-width: 1024px) {

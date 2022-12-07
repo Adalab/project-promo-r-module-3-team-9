@@ -28,7 +28,7 @@ function Share(props) {
             <i className="share__card fa-regular fa-address-card"></i>
             Crear tarjeta
           </button>
-          <p className="js-errormessage share__wrap2--errormessage"></p>
+          <p className="share__wrap2--errormessage">{props.errorMsg}</p>
         </section>
         <div className="line"></div>
         <section

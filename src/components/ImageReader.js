@@ -35,7 +35,7 @@ const ImageReader = (props) => {
     // Si la usuaria ha seleccionado al menos una imagen, selectedFile será diferente de undefined
     if (selectedFile) {
       // Por curiosidad, mira lo que contiene la constante selectedFile
-      console.log(selectedFile);
+      //console.log(selectedFile);
 
       // Le decimos al lector de ficheros que lea el fichero seleccionado por la usuaria
       fileReader.readAsDataURL(selectedFile);

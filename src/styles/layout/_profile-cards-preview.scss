@@ -87,7 +87,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  @media all and (min-width: 768px) {
+      border-radius: 6px;
+      margin-right: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      flex-grow: 3;
+  }
   &__wrap {
     width: 240px;
     display: flex;
@@ -192,22 +198,3 @@
   }
 }
 
-@media all and (min-width: 768px) {
-  .card {
-    border-radius: 6px;
-    margin-right: 20px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    align-self: center;
-    //min-height: 812px;
-    height: 95%;
-    flex-grow: 3;
-    min-height: initial;
-  }
-}
-
-@media all and (min-width: 1024px) {
-  .card {
-    //width: 57.13%;
-  }
-}
