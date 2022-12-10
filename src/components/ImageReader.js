@@ -1,5 +1,6 @@
 // Fichero src/components/ImageReader.js
 import { useRef } from 'react';
+import Compressor from 'compressorjs';
 
 /*
 El orden cronológico en el que se ejecuta este componente es:
@@ -31,16 +32,29 @@ const ImageReader = (props) => {
     // Sacamos su propiedad files que es un array con todas las imágenes seleccionadas por la usuaria
     // Como solo queremos la primera imagen seleccionada guardamos el primer elemento de files
     const selectedFile = fileElement.current.files[0];
+    //Function to compress selectedFile
 
-    // Si la usuaria ha seleccionado al menos una imagen, selectedFile será diferente de undefined
-    if (selectedFile) {
-      // Por curiosidad, mira lo que contiene la constante selectedFile
-      //console.log(selectedFile);
+    new Compressor(selectedFile, {
+      convertSize: 50000,
+      maxHeight: 400,
+      maxWidth: 400,
+      // The compression process is asynchronous,
+      // which means you have to access the `result` in the `success` hook function.
+      success(result) {
+        // Si la usuaria ha seleccionado al menos una imagen, selectedFile será diferente de undefined
+        if (result) {
+          // Le decimos al lector de ficheros que lea el fichero seleccionado por la usuaria
+          fileReader.readAsDataURL(result);
+          // Cuando esta acción termine, fileReader lanzará el evento 'load'
+        }
+      },
+      error(err) {
+        console.log(err.message);
+      },
 
-      // Le decimos al lector de ficheros que lea el fichero seleccionado por la usuaria
-      fileReader.readAsDataURL(selectedFile);
-      // Cuando esta acción termine, fileReader lanzará el evento 'load'
-    }
+    });
+
+
   };
 
   // Esta función se ejecuta cuando fileReader lanza el evento 'load'
